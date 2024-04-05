@@ -6,8 +6,8 @@ import {
   createHttpLink,
 } from '@apollo/client';
 
-import Login from './pages/Login';
-import Signup from './pages/Signup';
+import Login from './pages/login';
+import Signup from './pages/signup';
 
 import './App.css';
 
