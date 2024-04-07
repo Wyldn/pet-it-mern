@@ -35,6 +35,6 @@ const clothingSchema = new Schema(
     }
 )
 
-const Clothing = mongoose.model('Dog', dogSchema);
+const Clothing = mongoose.model('Clothing', dogSchema);
 
 module.exports = Clothing;
