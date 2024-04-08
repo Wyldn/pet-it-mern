@@ -24,6 +24,46 @@ const typeDefs = gql`
         clothingOwner: [User]
     }
 
+    type Category {
+        _id: ID
+        name: String
+    }
+    
+      type Product {
+        _id: ID
+        name: String
+        description: String
+        image: String
+        quantity: Int
+        price: Float
+        category: Category
+    }
+    
+      type Order {
+        _id: ID
+        purchaseDate: String
+        products: [Product]
+    }
+
+    type Checkout {
+        session: ID
+    }
+    
+    type Auth {
+        token: ID
+        user: User
+    }
+
+    type Query {
+        dog: [Dog]
+        categories: [Category]
+        products(category: ID, name: String): [Product]
+        product(_id: ID!): Product
+        user: User
+        order(_id: ID!): Order
+        checkout(products: [ID]!): Checkout
+    }
+
     type Mutation {
         login(firstName: String!, lastName: String!, email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth

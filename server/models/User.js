@@ -24,7 +24,8 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    clothing: [clothing.schema]
+    clothing: [Clothing.schema],
+    orders: [Order.schema]
   },
   // set this to use virtual below
   {
