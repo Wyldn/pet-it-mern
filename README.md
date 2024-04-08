@@ -2,7 +2,7 @@
 Thrift Store Application
 
 ## Description
-This website is a platform for dog lovers to connect with each other and donate to local pet shelters.
+
 
 
 
