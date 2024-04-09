@@ -31,3 +31,41 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_CLOTHING = gql`
+  mutation addClothing(
+    $clothingName: String!
+    $profilePicture: String!
+    $pictures: String!
+    $clothingType: String!
+    $price: String!
+    $preferences: Array
+  ) {
+    addClothing(
+      $clothingName: String!
+      $profilePicture: String!
+      $pictures: String!
+      $clothingType: String!
+      $price: String!
+      $preferences: Array
+    )
+  }
+`;
+
+export const ADD_ORDER = gql`
+  mutation addOrder($products: [ID]!) {
+    addOrder(products: $products) {
+      purchaseDate
+      products {
+        _id
+        name
+        description
+        price
+        quantity
+        category {
+          name
+        }
+      }
+    }
+  }
+`;
