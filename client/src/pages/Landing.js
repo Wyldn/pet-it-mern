@@ -1,9 +1,12 @@
-import Landing from "../components/Landing/Landing"
+import React from 'react';
+import './Landing.css';
+import Login from '../../components/Login/Login';
 
-const LandingPage = () => {
-    return (
-        <Landing />
-    )
-}
 
-export default LandingPage;
+export const Landing = () => {
+  return (
+    <Login />
+  );
+};
+
+export default Landing;
