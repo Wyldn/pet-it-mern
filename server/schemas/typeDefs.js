@@ -10,13 +10,11 @@ const typeDefs = gql`
         firstName: String!
         lastName: String!
         email: String!
-        pet: [Dog]
         orders: [Order]
     }
 
     type Dog {
         _id: ID
-        dogName: String!
         profilePicture: String!
         pictures: String!
         gender: String!
@@ -67,12 +65,10 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        login(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-        addUser(username: String!, email: String!, password: String!): Auth
-        addDog(dogName: String!, profilePicture: String!, pictures: String!, gender: String!, breed: String!, birthday: String!, preferences: String): Dog
+        login(email: String!, password: String!): Auth
+        addUser(firstName: String, lastName: String, email: String!, password: String!): Auth
         addOrder(products: [ID]!): Order
         updateUser(firstName: String, lastName: String, email: String, password: String): User
-        updateDog(_id: ID, dogName: String, profilePicture: String, pictures: String, gender: String, breed: String, birthday: String, preferences: String): Dog
         updateProduct(_id: ID!, quantity: Int!): Product
     }
 `;

@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Dog, Product, Category, Order } = require('../models');
+const { User, clothing, Product, Category, Order } = require('../models');
 const { signToken } = require('../utils/auth')
 
 const resolvers = {
@@ -16,7 +16,7 @@ const resolvers = {
             }
             throw new AuthenticationError('Not logged in');
         },
-        dog: async (parent, { _id }, context) => {
+        clothes: async (parent, { _id }, context) => {
             return await Dog.findById(_id).populate('dog');
         },
         categories: async () => {
@@ -84,12 +84,12 @@ const resolvers = {
                 // Validating email on database
                 const user = await User.findOne({ email });
                 if (!user) {
-                    throw new AuthenticationError('Incorrect credentials');
+                    throw new AuthenticationError('Incorrect email');
                 }
                 // Validating password on database
                 const correctPw = await user.isCorrectPassword(password);
                 if (!correctPw) {
-                    throw new AuthenticationError('Incorrect crendentials');
+                    throw new AuthenticationError('Incorrect password');
                 }
                 
                 const token = signToken(user);
@@ -137,7 +137,7 @@ const resolvers = {
       
             throw new AuthenticationError('Not logged in');
         },
-        updateDog: async (parent, { _id, dogName, profilePicture, pictures, gender, breed, birthday, preferences }, context) => {
+        updateDog: async (parent, { _id, Clothes, profilePicture, pictures, gender, breed, birthday, preferences }, context) => {
             return await Dog.findByIdAndUpdate(_id, {dogName, profilePicture, pictures, gender, breed, birthday, preferences}, {new: true});
         },
         updateProduct: async (parent, { _id, quantity }) => {
