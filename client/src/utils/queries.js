@@ -9,7 +9,6 @@ export const QUERY_CLOTHINGS = gql`
             pictures
             clothingType
             price
-            preferences
             clothingOwner {
                 _id
                 firstName
