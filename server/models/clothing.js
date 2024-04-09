@@ -1,13 +1,14 @@
-const { Schema } = require('mongoose');
+const mongoose = require('mongoose')
+const { Schema } = mongoose;
 const User = require('./User');
 
-const clothingSchema = new Schema(
+const dogSchema = new Schema(
     {
         userId: {
             type: String,
             required: true,
         },
-        clothingName: {
+        dogName: {
             type: String,
             required: true,
         },
@@ -16,25 +17,28 @@ const clothingSchema = new Schema(
             required: true,
         },
         pictures: {
-            type: Array,
-            required: true,
-        },
-        color: {
             type: String,
             required: true,
         },
-        clothingType: {
+        gender: {
+            type: String,
+            required: true,
+        },
+        breed: {
             type: Date,
             required: true,
         },
-        cost: {
+        birthday: {
             type: String,
             required: true,
         },
-        clothingOwner: [User.schema]
+        preferences: {
+            type: String,
+        },
+        petParent: [{type: Schema.Types.ObjectId, ref: 'User'}]
     }
 )
 
-const Clothing = mongoose.model('Clothing', clothingSchema);
+const Dog = mongoose.model('Clothing', clothingSchema);
 
 module.exports = Clothing;

@@ -1,6 +1,8 @@
-const db = require('./connection');
-const { User, Product, Category, Clothing } = require('../models');
-require('../images');
+const db = require('../config/connection');
+const Category = require('../models/Category');
+const Product = require('../models/Product');
+const User = require('../models/User');
+const Dog = require('../models/clothing');
 
 
 db.once('open', async () => {
@@ -16,14 +18,8 @@ db.once('open', async () => {
 
   const products = await Product.insertMany([
     {
-      name: 'T-Shirt',
-      description:
-        '100% Cotton',
-      image: 't-shirt.png',
-      category: categories[0]._id,
-      price: 9.99,
-      quantity: 300
-    },
+      
+    }
   ]);
 
   console.log('products seeded');
@@ -35,11 +31,7 @@ db.once('open', async () => {
     lastName: 'Fry',
     email: 'fry@testmail.com',
     password: 'password12345',
-    orders: [
-      {
-        products: [products[0]._id, products[0]._id, products[1]._id]
-      }
-    ]
+    
   });
 
   await User.create({
@@ -51,23 +43,21 @@ db.once('open', async () => {
 
   console.log('users seeded');
 
-  await Clothing.deleteMany();
+  await Dog.deleteMany();
 
-  await Clothing.create({
-    userId: '1',
-    clothingName: 'Vest',
-    profilePicture: '',
-    pictures: 'vest.jpg',
-    clothingType: 'Shirt',
-    price: '10',
-    clothingOwner: [
-        {
-            User: User.firstName
-        }
-    ]
-  });
+  // await Dog.create({
+  //   userId: '1',
+  //   dogName: 'Princess Leia',
+  //   profilePicture: 'leia-snow.jpg',
+  //   pictures: 'leia-snow.jpg',
+  //   gender: 'Girl',
+  //   breed: 'Golden Retriever',
+  //   birthday: '05/07/2017',
+  //   preferences: ['must be fixed', 'not aggressive', 'has all shots'],
+  //   petParent: [User.user.name]
+  // });
 
-  console.log('Clothings seeded');
+  console.log('Dogs seeded');
   
   process.exit();
 });

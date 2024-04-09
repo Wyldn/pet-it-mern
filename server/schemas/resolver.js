@@ -1,10 +1,10 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Clothing, Product, Category, Order } = require('../models');
-const { signToken } = require('../utils/')
+const { User, Dog, Product, Category, Order } = require('../models');
+const { signToken } = require('../utils/auth')
 
 const resolvers = {
     Query: {
-        me: async (parent, args, context) => {
+        user: async (parent, args, context) => {
             if (context.user) {
                 try {
                     // get a user by id
@@ -16,8 +16,8 @@ const resolvers = {
             }
             throw new AuthenticationError('Not logged in');
         },
-        clothing: async (parent, { _id }, context) => {
-            return await Clothing.findById(_id).populate('clothing');
+        dog: async (parent, { _id }, context) => {
+            return await Dog.findById(_id).populate('dog');
         },
         categories: async () => {
             return await Category.find();
@@ -110,12 +110,12 @@ const resolvers = {
                 console.log('Something went wrong. Could not sign up.', err);
             }
         },
-        addClothing : async (parent, args) => {
+        addDog : async (parent, args) => {
             try {
-                const Clothing = await Clothing.create(args);
-                return Clothing;
+                const dog = await Dog.create(args);
+                return dog;
             } catch (err) {
-                console.log('Something went wrong. Could not add Clothing', err)
+                console.log('Something went wrong. Could not add dog', err)
             }
         },
         addOrder: async (parent, { products }, context) => {
@@ -137,8 +137,8 @@ const resolvers = {
       
             throw new AuthenticationError('Not logged in');
         },
-        updateClothing: async (parent, { _id, ClothingName, profilePicture, pictures, gender, breed, birthday, preferences }, context) => {
-            return await Clothing.findByIdAndUpdate(_id, {ClothingName, profilePicture, pictures, gender, breed, birthday, preferences}, {new: true});
+        updateDog: async (parent, { _id, dogName, profilePicture, pictures, gender, breed, birthday, preferences }, context) => {
+            return await Dog.findByIdAndUpdate(_id, {dogName, profilePicture, pictures, gender, breed, birthday, preferences}, {new: true});
         },
         updateProduct: async (parent, { _id, quantity }) => {
             const decrement = Math.abs(quantity) * -1;

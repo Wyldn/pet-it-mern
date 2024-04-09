@@ -1,15 +1,17 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_CLOTHINGS = gql`
-    query getClothings($user: ID) {
-        clothings(user: $user) {
+export const QUERY_DOGS = gql`
+    query getDogs($user: ID) {
+        dogs(user: $user) {
             _id
-            clothingName
+            dogName
             profilePicture
             pictures
-            clothingType
-            price
-            clothingOwner {
+            gender
+            breed
+            birthday
+            preferences
+            petParent {
                 _id
                 firstName
                 lastName
@@ -72,13 +74,14 @@ export const QUERY_USER = gql`
       firstName
       lastName
       pet {
-        _id: ID
-        clothingName: String!
-        profilePicture: String!
-        pictures: String!
-        clothingType: String!
-        price: String!
-        preferences: Array
+        _id
+        dogName
+        profilePicture
+        pictures
+        gender
+        breed
+        birthday
+        preferences
       }
       orders {
         _id

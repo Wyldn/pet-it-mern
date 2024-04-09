@@ -10,18 +10,20 @@ const typeDefs = gql`
         firstName: String!
         lastName: String!
         email: String!
-        clothing: [clothing]
+        pet: [Dog]
+        orders: [Order]
     }
 
-    type Clothing {
+    type Dog {
         _id: ID
-        clothingName: String!
+        dogName: String!
         profilePicture: String!
         pictures: String!
-        color: String!
-        clothingType: String!
-        cost: String!
-        clothingOwner: [User]
+        gender: String!
+        breed: String!
+        birthday: String!
+        preferences: String
+        petParent: [User]
     }
 
     type Category {
@@ -31,12 +33,12 @@ const typeDefs = gql`
     
       type Product {
         _id: ID
-        name: String
+        name: String!
         description: String
         image: String
         quantity: Int
-        price: Float
-        category: Category
+        price: Float!
+        category: Category!
     }
     
       type Order {
@@ -67,9 +69,12 @@ const typeDefs = gql`
     type Mutation {
         login(firstName: String!, lastName: String!, email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
-        addClothingName(clothingName: String!, profilePicture: String!, pictures: String!, color: String!, clothingType: String!, cost: String!, : Clothing
+        addDog(dogName: String!, profilePicture: String!, pictures: String!, gender: String!, breed: String!, birthday: String!, preferences: String): Dog
+        addOrder(products: [ID]!): Order
         updateUser(firstName: String, lastName: String, email: String, password: String): User
-        updateClothing(ClothingName: String, profilePicture: String, pictures: String, color: String, clothingType: String, cost: String, : Clothing
+        updateDog(_id: ID, dogName: String, profilePicture: String, pictures: String, gender: String, breed: String, birthday: String, preferences: String): Dog
+        updateProduct(_id: ID!, quantity: Int!): Product
+    }
 `;
 
 module.exports = typeDefs;
