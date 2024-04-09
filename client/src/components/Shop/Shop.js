@@ -1,8 +1,13 @@
 import React from 'react';
+import ProductList from "../ProductList/ProductList";
+import Cart from "../Cart/Cart";
 
 export const Shop = () => {
     return (
-        <div>replace</div>
+      <div className="container">
+        <ProductList />
+        <Cart />
+      </div>
     );
 };
 
