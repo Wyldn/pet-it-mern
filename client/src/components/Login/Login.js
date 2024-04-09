@@ -13,7 +13,6 @@ import {
   MDBTabsPane,
   MDBBtn,
   MDBInput,
-  MDBCheckbox
 }
 from 'mdb-react-ui-kit';
 
@@ -52,11 +51,6 @@ function Login(props) {
   const handleFormSignup = async (event) => {
     event.preventDefault();
 
-    console.log(formState.email)
-    console.log(formState.password)
-    console.log(formState.firstName)
-    console.log(formState.lastName)
-    console.log(error);
     const mutationResponse = await addUser({
       variables: {
           email: formState.email,
@@ -70,9 +64,9 @@ function Login(props) {
     Auth.login(token);
   };
 
-  // This 
+  // This takes in the user's input
   const handleChange = (event) => {
-    console.log("hweh")
+  
     const { name, value } = event.target;
     setFormState({
       ...formState,
@@ -103,8 +97,8 @@ function Login(props) {
 
 
         <form onSubmit={handleFormLogin}>
-          <MDBInput wrapperClass='mb-4' name="email" label='Email address' id='email' type='email' onChange={handleChange}/>
-          <MDBInput wrapperClass='mb-4' name="password" label='Password' id='password' type='password' onChange={handleChange}/>
+          <MDBInput wrapperClass='mb-4' name="email" label='Email address' id='email' type='email' onInput={handleChange}/>
+          <MDBInput wrapperClass='mb-4' name="password" label='Password' id='password' type='password' onInput={handleChange}/>
 
           <MDBBtn className="mb-4 w-100" type= "submit">Sign in</MDBBtn>
         </form>
@@ -114,10 +108,10 @@ function Login(props) {
 
       
           <form onSubmit={handleFormSignup}>
-          <MDBInput wrapperClass='mb-4' name="firstName" label='First Name' id='firstName' type='firstName' onChange={handleChange}/>
-          <MDBInput wrapperClass='mb-4' name="lastName" label='Last Name' id='lastName' type='lastName' onChange={handleChange}/>
-          <MDBInput wrapperClass='mb-4' name="email" label='Email' id='email' type='email' onChange={handleChange}/>
-          <MDBInput wrapperClass='mb-4' name="password" label='Password' id='password' type='password' onChange={handleChange}/>
+          <MDBInput wrapperClass='mb-4' name="firstName" label='First Name' id='firstName' type='firstName' onInput={handleChange}/>
+          <MDBInput wrapperClass='mb-4' name="lastName" label='Last Name' id='lastName' type='lastName' onInput={handleChange}/>
+          <MDBInput wrapperClass='mb-4' name="email" label='Email' id='email' type='email' onInput={handleChange}/>
+          <MDBInput wrapperClass='mb-4' name="password" label='Password' id='password' type='password' onInput={handleChange}/>
 
           <MDBBtn className="mb-4 w-100" type= "submit">Sign up</MDBBtn>
           </form>
