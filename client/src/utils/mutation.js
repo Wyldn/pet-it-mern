@@ -17,12 +17,20 @@ export const ADD_USER = gql`
     $lastName: String!
     $email: String!
     $password: String!
+    $dogName: String!
+    $gender: String!
+    $breed: String!
+    $birthday: String!
   ) {
     addUser(
       firstName: $firstName
       lastName: $lastName
       email: $email
       password: $password
+      dogName: $dogName
+      gender: $gender
+      breed: $breed
+      birthday: $birthday
     ) {
       token
       user {
@@ -37,62 +45,73 @@ export const UPDATE_USER = gql`
     $firstName: String
     $lastName: String
     $email: String
-    $password: String
+    $dogName: String
+    $gender: String
+    $breed: String
+    $birthday: String
   ) {
     updateUser(
       firstName: $firstName
       lastName: $lastName
       email: $email
-      password: $password
-    ) {
-      token
-      user {
-        _id
-      }
+      dogName: $dogName
+      gender: $gender
+      breed: $breed
+      birthday: $birthday
+    )  {
+      _id
+      birthday
+      breed
+      dogName
+      email
+      firstName
+      gender
+      lastName
     }
   }
 `;
 
-export const ADD_CLOTHES = gql`
-  mutation addClothes(
-    $ClothesName: String
-    $profilePicture: String
-    $pictures: String
-    $gender: String
-    $breed: String
-    $birthday: String
-    $preferences: String
-  ) {
-    addDog(
-      ClothesName: $ClothesName
-      profilePicture: $profilePicture
-      pictures: $pictures
-      gender: $gender
-      breed: $breed
-      birthday: $birthday
-      preferences: $preferences
-    )
-  }
-`;
+// export const ADD_DOG = gql`
+//   mutation addDog(
+//     $dogName: String!
+//     $gender: String!
+//     $breed: String!
+//     $birthday: String!
+//     $preferences: String
+//   ) {
+//     addDog(
+//       dogName: $dogName
+//       gender: $gender
+//       breed: $breed
+//       birthday: $birthday
+//       preferences: $preferences
+//     ) {
+//       dogName
+//       gender
+//       breed
+//       birthday
+//     }
+//   }
+// `;
 
-export const UPDATE_CLOTHES = gql`
-  mutation updateClothes(
-    $ClothesName: String
-    $profilePicture: String
-    $pictures: String
-    $gender: String
-    $breed: String
-    $birthday: String
-    $preferences: String
-  ) {
-    updateClothes(
-      ClothesName: $ClothesName
-      profilePicture: $profilePicture
-      pictures: $pictures
-      gender: $gender
-      breed: $breed
-      birthday: $birthday
-      preferences: $preferences
-    )
-  }
-`;
+// export const UPDATE_DOG = gql`
+//   mutation updateDog(
+//     $dogName: String
+//     $profilePicture: String
+//     $pictures: String
+//     $gender: String
+//     $breed: String
+//     $birthday: String
+//     $preferences: String
+//   ) {
+//     updateDog(
+//       dogName: $dogName
+//       profilePicture: $profilePicture
+//       pictures: $pictures
+//       gender: $gender
+//       breed: $breed
+//       birthday: $birthday
+//       preferences: $preferences
+//     )
+//   }
+// `;
