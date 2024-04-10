@@ -1,15 +1,15 @@
 import React from 'react';
-import './Home.css';
-import Profile from '../Profile/Profile';
+import './Donate.css';
+import Donate from '../../components/Donate/Donate';
 import SideNavbar from '../../components/SideNavbar/SideNavbar';
 
 export const Landing = () => {
   return (
     <>
         <SideNavbar />
-        <Profile />
+        <Donate />
     </>
   );
 };
 
-export default Landing; 
+export default Landing;

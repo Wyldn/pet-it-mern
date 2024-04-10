@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {
   ApolloClient,
   InMemoryCache,
@@ -8,16 +8,12 @@ import {
 import { setContext } from "@apollo/client/link/context";
 
 import Auth from "./utils/auth";
-import LandingPage from "./pages/Landing";
-import Home from "./pages/Home"
+import Landing from "./pages/Landing/Landing";
+import Home from "./pages/Home/Home";
+import Donate from "./pages/Donate/Donate";
+import Profile from "./pages/Profile/Profile";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
-import Shop from './components/Shop/Shop';
-import Detail from './pages/Detail';
-import Login from './components/Login/Login';
-import Signup from './components/Signup/Signup';
-import { StoreProvider } from './utils/GlobalState';
-import Success from './pages/Success';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -40,60 +36,22 @@ const client = new ApolloClient({
 
 
 function App() {
-  var protectedRoute;
-
-  // React.Fragment 
-  // If the user is logged in, then root directory will default to home route.
-  if (Auth.loggedIn()) {
-    protectedRoute = (
-      <Routes>
-        <Route 
-          path= "/" 
-          element = { <Home /> } 
-        />
-        <Route 
-          path="/login" 
-          element={<Login />} 
-        />
-        <Route 
-          path="/signup" 
-          element={<Signup />} 
-        />
-        <StoreProvider>
-          <Route 
-            path="/shop" 
-            element={<Shop />} 
-          />
-          <Route 
-            path="/success" 
-            element={<Success />} 
-          />
-          <Route 
-            path="/products/:id" 
-            element={<Detail />} 
-          />
-        </StoreProvider>
-      </Routes>
-    );
-  // If the user is not logged in, then root directory will default to the landing page.
-  } else {
-    protectedRoute = (
-      <Routes>
-        <Route 
-          path="/" 
-          element={ <LandingPage /> } 
-        />
-      </Routes>
-    );
-  }
-
+  
   return (
     <ApolloProvider client={client}>
-      <Router>
-        {protectedRoute}
-      </Router>
+        <Router>
+        <Routes>
+          {Auth.loggedIn() ? (
+            <Route path="/" element={ <Home /> }/>
+          ) : (
+            <Route path="/" element={ <Landing /> }/>
+          )}
+          <Route path="/donate" element={ <Donate /> } />
+          <Route path="/profile" element={ <Profile /> } />
+          </Routes>
+        </Router>
     </ApolloProvider>
-  );
+  )
 }
 
 export default App;
