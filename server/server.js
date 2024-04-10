@@ -11,6 +11,8 @@ const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
+// const apiRoutes = require('./routes/api');
+
 
 // Serve up static assets
 // app.use('/images', express.static(path.join(__dirname, '../client/images')));
@@ -73,7 +75,7 @@ const startApolloServer = async (typeDefs, resolvers) => {
   server.applyMiddleware({ app });
   
   db.once('open', () => {
-    app.listen(PORT, () => {
+    app.listen(process.env.PORT, () => {
       console.log(`API server running on port ${PORT}!`);
       console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
     })
