@@ -1,6 +1,7 @@
 const express = require('express');
+const path = require('path');
 const { ApolloServer } = require('apollo-server-express');
-const {path, resolve} = require('path');
+
 const { authMiddleware } = require('./utils/auth');
 require('dotenv').config();
 const { typeDefs, resolvers } = require('./schemas');
@@ -10,6 +11,8 @@ const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3001;
 const app = express();
+
+// const apiRoutes = require('./routes/api');
 
 
 // Serve up static assets

@@ -19,11 +19,11 @@ import {
 }
 from 'mdb-react-ui-kit';
 
-function Login(props) {
+export function Login(props) {
 
   const [justifyActive, setJustifyActive] = useState('tab1');;
   const [formState, setFormState] = useState({ email: '', password: '' });
-  const [login, { error, data }] = useMutation(LOGIN);
+  const [login, { error }] = useMutation(LOGIN);
   const [addUser] = useMutation(ADD_USER);
 
   // This is for the login/signup tabs
@@ -85,8 +85,8 @@ function Login(props) {
   return (
     <div className='wrapper'>
       <div className='company-intro'>
-        <h1 className='company-name'> Pawfect Match </h1>
-        <h2> Meet dog people for friends, pet playdates, or a date for you! </h2>
+        <h1 className='company-name'> Pet-it-mern </h1>
+        <h2> Meet dog people for friends, pet playdates, perhaps a date for the both ofo you! </h2>
       </div> 
     <div className='login-wrapper'>
       <div className='picture-left'>

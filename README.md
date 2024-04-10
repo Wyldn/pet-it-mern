@@ -1,4 +1,4 @@
-# thrift-tee
+# Pet-it-mern
 Thrift Store Application
 
 ## Description
