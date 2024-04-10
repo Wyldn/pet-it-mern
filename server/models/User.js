@@ -24,8 +24,30 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    pet: [{type: Schema.Types.ObjectId, ref: 'Clothing'}],
-    orders: [{type: Schema.Types.ObjectId, ref: 'Order'}],
+    dogName: {
+      type: String,
+      required: true,
+    },
+    gender: {
+      type: String,
+      required: true,
+    },
+    breed: {
+      type: String,
+      required: true,
+    },
+    birthday: {
+      type: String,
+      required: true,
+    },
+    // followers: [{
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: 'Follow'
+    // }],
+    // following: [{
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: 'Follow'
+    // }]
   },
   // set this to use virtual below
   {
@@ -34,6 +56,17 @@ const userSchema = new Schema(
     },
   }
 );
+
+// const FollowSchema = new mongoose.Schema({
+//   follower: {
+//     type: mongoose.Schema.Types.ObjectId,
+//     ref: 'User'
+//   },
+//   following: {
+//     type: mongoose.Schema.Types.ObjectId,
+//     ref: 'User'
+//   }
+// });
 
 // hash user password
 userSchema.pre('save', async function (next) {
@@ -51,5 +84,7 @@ userSchema.methods.isCorrectPassword = async function (password) {
 };
 
 const User = mongoose.model('User', userSchema);
+// const Follow = mongoose.model('Follow', FollowSchema);
 
 module.exports = User;
+// module.exports = Follow;
