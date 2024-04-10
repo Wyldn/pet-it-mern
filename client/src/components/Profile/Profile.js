@@ -45,13 +45,13 @@ export function Profile() {
       event.preventDefault();
 
      
-      const inputFirstName = formState.firstName || userData.firstName;
       const inputLastName = formState.lastName || userData.lastName;
+      const inputFirstName = formState.firstName || userData.firstName;
       const inputEmail = formState.email || userData.email;
-      const inputDogName = formState.dogName || userData.dogName;
       const inputBreed = formState.breed || userData.breed;
-      const inputGender = formState.gender || userData.gender;
+      const inputDogName = formState.dogName || userData.dogName;
       const inputBirthday = formState.birthday || userData.birthday;
+      const inputGender = formState.gender || userData.gender;
       console.log (inputFirstName)
       console.log (inputLastName)
       console.log (inputEmail)
@@ -73,7 +73,7 @@ export function Profile() {
         console.log("User updated!")
         if (mutationResponse) {
             console.log("Update successful!")
-            window.location.reload();
+            window.location.replace('./');
         }
       } 
   

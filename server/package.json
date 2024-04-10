@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "proxy": "http://localhost:3001/",
   "scripts": {
       "start": "node server.js",
       "seed": "node seeds/seed.js",
@@ -19,6 +20,7 @@
       "jsonwebtoken": "^8.5.1",
       "mongoose": "^6.1.8",
       "path": "^0.12.7",
+      "socket.io": "4.5.4",
       "stripe": "^8.67.0"
   },
   "devDependencies": {
