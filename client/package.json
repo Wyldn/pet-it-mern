@@ -1,11 +1,12 @@
 {
-  "name": "thrift-tee-mern",
+  "name": "pet-it-mern",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:3001",
   "dependencies": {
     "@apollo/client": "^3.5.8",
     "@apollo/react-hooks": "^4.0.0",
+    "@stripe/react-stripe-js": "1.16.1",
     "@stripe/stripe-js": "^1.3.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^11.1.0",
@@ -16,6 +17,7 @@
     "jwt-decode": "^2.2.0",
     "mdb-react-ui-kit": "^4.2.0",
     "react": "^17.0.2",
+    "react-confetti": "^6.1.0",
     "react-dom": "^17.0.2",
     "react-icons": "4.7.1",
     "react-router-dom": "^6.4.5",
