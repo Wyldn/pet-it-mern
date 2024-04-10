@@ -1,15 +1,15 @@
 import React from 'react';
 import './Home.css';
-import Profile from '../Profile/Profile';
 import SideNavbar from '../../components/SideNavbar/SideNavbar';
+import CardFeed from '../../components/CardFeed/CardFeed';
 
 export const Landing = () => {
   return (
     <>
         <SideNavbar />
-        <Profile />
+        <CardFeed />
     </>
   );
 };
 
-export default Landing; 
+export default Landing;

@@ -1,22 +1,24 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_CLOTHES = gql`
-    query getClothes($user: ID) {
-        Clothes(user: $user) {
-            _id
-            ClotohesName
-            profilePicture
-            pictures
-            birthday
-            preferences
-            ClothesParent {
-                _id
-                firstName
-                lastName
-            }
-        }
-    }
-`;
+// export const QUERY_DOGS = gql`
+//     query getDogs($user: ID) {
+//         dogs(user: $user) {
+//             _id
+//             dogName
+//             profilePicture
+//             pictures
+//             gender
+//             breed
+//             birthday
+//             preferences
+//             petParent {
+//                 _id
+//                 firstName
+//                 lastName
+//             }
+//         }
+//     }
+// `;
 
 // export const QUERY_PRODUCTS = gql`
 //   query getProducts($category: ID) {
@@ -69,18 +71,14 @@ export const QUERY_CLOTHES = gql`
 export const QUERY_USER = gql`
   {
     user {
+      _id
       firstName
       lastName
       email
-      clothes {
-        _id
-        ClothesName
-        profilePicture
-        pictures
-        breed
-        birthday
-        preferences
-      }
+      dogName
+      gender
+      breed
+      birthday
     }
   }
 `;
