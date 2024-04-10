@@ -32,49 +32,67 @@ export const ADD_USER = gql`
   }
 `;
 
-export const ADD_CLOTHING = gql`
-  mutation addClothing(
-    $clothingName: String!
-    $profilePicture: String!
-    $pictures: String!
-    $clothingType: String!
-    $price: String!
-    $preferences: Array
+export const UPDATE_USER = gql`
+  mutation updateUser(
+    $firstName: String
+    $lastName: String
+    $email: String
+    $password: String
   ) {
-    addClothing(
-      $clothingName: String!
-      $profilePicture: String!
-      $pictures: String!
-      $clothingType: String!
-      $price: String!
-      $preferences: Array
-    )
-  }
-`;
-
-export const ADD_ORDER = gql`
-  mutation addOrder($products: [ID]!) {
-    addOrder(products: $products) {
-      purchaseDate
-      products {
+    updateUser(
+      firstName: $firstName
+      lastName: $lastName
+      email: $email
+      password: $password
+    ) {
+      token
+      user {
         _id
-        name
-        description
-        price
-        quantity
-        category {
-          name
-        }
       }
     }
   }
 `;
 
+export const ADD_CLOTHES = gql`
+  mutation addClothes(
+    $ClothesName: String
+    $profilePicture: String
+    $pictures: String
+    $gender: String
+    $breed: String
+    $birthday: String
+    $preferences: String
+  ) {
+    addDog(
+      ClothesName: $ClothesName
+      profilePicture: $profilePicture
+      pictures: $pictures
+      gender: $gender
+      breed: $breed
+      birthday: $birthday
+      preferences: $preferences
+    )
+  }
+`;
 
-
-
-
-
-
-
-
+export const UPDATE_CLOTHES = gql`
+  mutation updateClothes(
+    $ClothesName: String
+    $profilePicture: String
+    $pictures: String
+    $gender: String
+    $breed: String
+    $birthday: String
+    $preferences: String
+  ) {
+    updateClothes(
+      ClothesName: $ClothesName
+      profilePicture: $profilePicture
+      pictures: $pictures
+      gender: $gender
+      breed: $breed
+      birthday: $birthday
+      preferences: $preferences
+    )
+  }
+`;

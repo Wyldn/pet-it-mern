@@ -1,6 +1,6 @@
 import React from 'react';
-import './Home.css';
-import Profile from '../Profile/Profile';
+import './Profile.css';
+import Profile from '../../components/Profile/Profile';
 import SideNavbar from '../../components/SideNavbar/SideNavbar';
 
 export const Landing = () => {
@@ -12,4 +12,4 @@ export const Landing = () => {
   );
 };
 
-export default Landing; 
+export default Landing;
