@@ -26,7 +26,7 @@ import {
 
 import DeleteButton from '../DeleteButton/DeleteButton';
 import LikeButton from '../LikeButton/LikeButton';
-import Popup from '../../utils/Popup';
+//import Popup from '../../utils/Popup';
 
 export function Posts(props) {
   const [speed, setSpeed] = useState("");
