@@ -18,20 +18,22 @@ import {
   MDBRow,
   MDBTextArea,
 } from 'mdb-react-ui-kit';
+import { valueFromASTUntyped } from 'graphql';
 
 
 export const CreatePost = () => {
     // function to display user's data on posting.
     const { loading, data } = useQuery(QUERY_USER);
     const userData = data?.user || {};
-    const [images, setImages] = React.useState([]);
-    const [showImages, setShowImages] = React.useState(true);
 
     
     // Function to retrieve all users' posts.
     const { values, onChange, onSubmit } = useForm(createPostCallback, {
         body: "",
+        email: userData.email,
     });
+    values.email = userData.email;
+    
     const [createPost, { error }] = useMutation(CREATE_POST, {
         
         variables: values,
@@ -41,7 +43,7 @@ export const CreatePost = () => {
           });
           Object.getPosts = [result.data.createPost, ...data.getPosts];
           proxy.writeQuery({ query: GET_ALL_POSTS, data });
-          values.body = "";
+          values.body = ""
         },
     });
 
@@ -52,16 +54,16 @@ export const CreatePost = () => {
             storedImages.push(storedImage);
     };
 
-
     // remove photos
     function refreshMyPhotos() {
        document.getElementById('deleteMe').textContent = ''
     }
 
+    // function for images please fix me later gasssan 
     
     function createPostCallback() {
         createPost();
-        window.location.reload(true);
+        window.location.reload();
     };
 
     if (loading) {
@@ -90,18 +92,14 @@ export const CreatePost = () => {
                             </div>
                         </div>
                         <p className="mt-3 mb-4 pb-2">
-                            {/* {values.body ? values.body : "Share your thoughts!"} */}
+                            {values.body ? values.body : "Share your thoughts!"}
                         </p>
                         </MDBCardBody>
 
                         {/* {ternuryImages} */}
-                        <div className="img-up" id="deleteMe">
+                        <div id="deleteMe">
                         {storedImages.map((image, index) => {
-                            if (image === images)
-                            return <img src={`${image}`} key={index} alt="puppy" />
-                            else {
-                                return("")
-                            }
+                            return <img src={`${image}`} key={index} alt={`image${index} from local storage`} />
                         })}
                         </div>
                         
